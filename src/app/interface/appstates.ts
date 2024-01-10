@@ -1,12 +1,12 @@
 import { DataState } from "../enum/datastate.enum";
 import { User } from "./user";
 
-export interface Loginstate {
+export interface LoginState {
     dataState: DataState;
     loginSuccess?: boolean;
     error?: string;
     message?: string;
-    isUsing?: boolean;
+    isUsingMfa?: boolean;
     phone?: string;
 }
 
@@ -17,7 +17,7 @@ export interface CustomHttpRespose<T> {
     message: string;
     reason?: string;
     developerMessage?: string;
-    data?: TemplateStringsArray;
+    data?: T;
     
 }
 

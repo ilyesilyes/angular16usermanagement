@@ -7,14 +7,13 @@ import { VerifyComponent } from './component/verify/verify.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'resgister', component: RegisterComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'resetpassword', component: ResetpasswordComponent},
   {path: 'user/verify/account/:key', component: VerifyComponent},
-  {path: 'user/verify/password/:key', component: VerifyComponent},
+  {path: 'user/verify/password/:key', component: VerifyComponent}, 
   {path: '**', component: LoginComponent},
 
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
