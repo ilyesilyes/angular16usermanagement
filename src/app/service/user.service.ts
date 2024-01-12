@@ -7,13 +7,21 @@ import { CustomHttpRespose, Profile } from '../interface/appstates';
   providedIn: 'root'
 })
 export class UserService {
-  private readonly server: string = '';
+  private readonly server: string = 'http://localhost:8081';
 
   constructor(private http: HttpClient) { }
 
   login$ = (email: string, password: string) => <Observable<CustomHttpRespose<Profile>>>
     this.http.post<CustomHttpRespose<Profile>>
       (`${this.server}/user/login`, { email, password })
+      .pipe(
+        tap((value) => console.log(value)),
+        catchError(this.handleError)
+      );
+
+  verifyCode$ = (email: string, code: string) => <Observable<CustomHttpRespose<Profile>>>
+    this.http.get<CustomHttpRespose<Profile>>
+      (`${this.server}/user/verify/code/${email}/${code}`)
       .pipe(
         tap((value) => console.log(value)),
         catchError(this.handleError)
